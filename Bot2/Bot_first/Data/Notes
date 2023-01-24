@@ -1,0 +1,2 @@
+m = await message.answer_video(video)
+print(m)
