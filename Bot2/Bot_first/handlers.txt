@@ -1,0 +1,12 @@
+@dp.message_handler(commands=['note'])
+# async def process_note_command(message: Message):
+#     user_id = message.from_user.id
+#     await bot.send_chat_action(user_id, ChatActions.RECORD_VIDEO_NOTE)
+#     await asyncio.sleep(1)  # конвертируем видео и отправляем его пользователю
+#     await bot.send_video_note(message.from_user.id, VIDEO_NOTE)
+
+
+# @dp.message_handler(commands=['files'])
+# async def get_all_files(message: Message):
+#     user_id = message.from_user.id
+#     files = await

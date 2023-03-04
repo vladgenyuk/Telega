@@ -26,5 +26,3 @@ def db_conn(id):
 
 
 a = db_conn(3)
-
-p

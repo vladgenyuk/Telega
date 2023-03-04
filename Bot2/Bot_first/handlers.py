@@ -4,7 +4,7 @@ from DB_FICH import db_conn
 from Bot2 import dp, bot
 from write_func import write_to_file
 from aiogram.types import Message, InputMediaVideo, InputMediaPhoto, ChatActions
-from models import *
+
 from keyboard import *
 DB_INFO = 'postgresql://postgres:qseawdzxc1@localhost:5432/Psyc_lesson_1'
 
@@ -53,14 +53,6 @@ async def audio_send(message: Message):
     await bot.send_audio(message.from_user.id, 'BAACAgIAAxkDAAIBfWLReB-qNcQjXlzraLUDmsgZGjZEAAKAHAACifWQSlPQUIZKMnARKQQ')
 
 
-'''@dp.message_handler(commands=['note'])
-async def process_note_command(message: Message):
-    user_id = message.from_user.id
-    await bot.send_chat_action(user_id, ChatActions.RECORD_VIDEO_NOTE)
-    await asyncio.sleep(1)  # конвертируем видео и отправляем его пользователю
-    await bot.send_video_note(message.from_user.id, VIDEO_NOTE)'''
-
-
 @dp.message_handler(commands=['file'])
 async def process_file_command(message: Message):
     user_id = message.from_user.id
@@ -69,12 +61,6 @@ async def process_file_command(message: Message):
     with open('Data/angel_respawn_meloboom.mp3', 'rb') as TEXT_FILE:
         await bot.send_document(user_id, TEXT_FILE,
                                 caption='Этот файл специально для тебя!')
-
-
-# @dp.message_handler(commands=['files'])
-# async def get_all_files(message: Message):
-#     user_id = message.from_user.id
-#     files = await
 
 
 @dp.message_handler(commands=['text'])
@@ -100,16 +86,11 @@ async def process_start_command(message: Message):
     await message.reply("Привет!", reply_markup=inline_kb1)
 
 
-
-
 @dp.message_handler()
 async def echo(message: Message):
     text = f'Привет, ты написал {message.text}'
     await bot.send_message(message.from_user.id, text=text)
     await message.answer(text=text)
     write_to_file(message.text)
-
-
-
 
 
