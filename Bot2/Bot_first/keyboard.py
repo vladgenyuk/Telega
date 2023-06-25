@@ -1,20 +1,16 @@
-from aiogram.types import ReplyKeyboardRemove, \
-    ReplyKeyboardMarkup, KeyboardButton, \
-    InlineKeyboardMarkup, InlineKeyboardButton
-
-button_hi = KeyboardButton('Привет!')
-button_bye = KeyboardButton('Пока!')
-button_1 = KeyboardButton('Xx_1_xX')
-button_2 = KeyboardButton('Xx_2_xX')
-
-greet_kb = ReplyKeyboardMarkup(row_width=1, resize_keyboard=True, one_time_keyboard=True)
-greet_kb1 = ReplyKeyboardMarkup(row_width=1, resize_keyboard=True, one_time_keyboard=True)
-greet_kb.add(button_hi)
-greet_kb.add(button_bye)
-greet_kb1.add(button_1)
-greet_kb1.add(button_2)
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, \
+    ReplyKeyboardMarkup, KeyboardButton
+from aiogram.utils.callback_data import CallbackData
 
 
-inline_btn_1 = InlineKeyboardButton('Первая кнопка!', callback_data='button1')
-inline_kb1 = InlineKeyboardMarkup().add(inline_btn_1)
+cb_inline = CallbackData('post', 'action', 'data')
 
+cat_btn = InlineKeyboardButton(text='Посмотреть котика',
+                           callback_data=cb_inline.new(action='showcat', data='text'))
+
+kb = InlineKeyboardMarkup().add(cat_btn)
+
+btn = KeyboardButton(text='Посмотреть котика',
+                           callback_data=cb_inline.new(action='showcat', data='text'))
+
+kb1 = ReplyKeyboardMarkup().add(btn)

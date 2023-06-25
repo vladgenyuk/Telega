@@ -1,10 +1,15 @@
-BOT_TOKEN = '5422068288:AAFBViUfw8uv1jffjv4ctFqR3bAvXBday8g'
-BOT_NAME = 'VladLeb_Bot'
-ADMIN_ID = 5135492567
-ADMIN_FIRST_NAME = 'Vladislav'
-#----------
-HOST = 'localhost'
-USER = 'postgres'
-PASSWORD = 'qseawdzxc1'
-DB_NAME = 'Psyc_lesson_1'
-PORT = 5432
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+BOT_TOKEN = os.environ.get('BOT_TOKEN')
+BOT_NAME = os.environ.get('VladLeb_Bot')
+ADMIN_ID = os.environ.get('ADMIN_ID')
+ADMIN_FIRST_NAME = os.environ.get('ADMIN_FIRST_NAME')
+
+DB_HOST = os.environ.get('DB_HOST')
+DB_USER = os.environ.get('DB_USER')
+DB_PASS = os.environ.get('DB_PASS')
+DB_NAME = os.environ.get('DB_NAME')
+DB_PORT = os.environ.get('DB_PORT')

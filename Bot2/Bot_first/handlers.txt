@@ -10,3 +10,8 @@
 # async def get_all_files(message: Message):
 #     user_id = message.from_user.id
 #     files = await
+
+
+API = 'https://api.telegram.org/bot' + BOT_TOKEN + '/'
+updates = requests.get(API + 'getUpdates').json()
+message = updates['result'][0]['message']['text']

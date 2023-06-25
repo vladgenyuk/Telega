@@ -1,8 +1,11 @@
 from aiogram import Bot, Dispatcher, executor
 from config import BOT_TOKEN, ADMIN_ID
+from aiogram.contrib.fsm_storage.memory import MemoryStorage
+
+storage = MemoryStorage()
 
 bot = Bot(BOT_TOKEN, parse_mode='HTML')
-dp = Dispatcher(bot)
+dp = Dispatcher(bot, storage=storage)
 
 
 async def send_to_admin(dp):
@@ -11,5 +14,3 @@ async def send_to_admin(dp):
 if __name__ == '__main__':
     from handlers import dp
     executor.start_polling(dp, on_startup=send_to_admin)
-
-

@@ -1,27 +1,10 @@
-import sqlalchemy
-from pydantic import BaseModel
-from sqlalchemy import Column, String, Integer, Table
+from sqlalchemy import Column, String, Integer, DateTime, func
+from database import metadata, Base
 
 
-metadata = sqlalchemy.MetaData()
-
-
-class File(BaseModel):
-    id: int
-    file_id: str
-    filename: str | None = None
-
-
-class Item(BaseModel):
-    id: int
-    title: str
-    description: str | None = None
-
-
-Items = Table(
-    "item",
-    metadata,
-    Column("id", Integer, primary_key=True),
-    Column("title", String),
-    Column("description", String),
-)
+class User(Base):
+    __tablename__ = 'user'
+    id = Column(Integer, primary_key=True)
+    email = Column(String(255))
+    username = Column(String(255))
+    created_at = Column(DateTime, default=func.now())
